@@ -7,10 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install sshx
 RUN curl -sSf https://sshx.io/get | sh
 
-# (Opsional tapi bagus) jalan sebagai user non-root
-RUN useradd -m -u 10001 app
-USER app
-WORKDIR /home/app
+WORKDIR /root
 
 ENTRYPOINT ["/usr/bin/tini","--"]
 CMD ["bash","-lc","sshx"]
